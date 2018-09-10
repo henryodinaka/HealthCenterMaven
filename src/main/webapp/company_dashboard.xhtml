@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Company Dashboard</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="base_template.xhtml">
+            <ui:define name="body">
+                <h1>Welcome <h:outputText value="#{companyBean.companyName}"/></h1>
+                <div class="row">
+                    <div class="col-5">
+                        <p>
+                            This account was created on the <h:outputText value="#{companyBean.createdDate}"/>
+                            with the following details;
+                        </p>
+                        <p>
+                            Company Name: <h:outputText value="#{companyBean.companyName}"/>
+                        </p>
+                        <p>
+                            Email Address: <h:outputText value="#{companyBean.email}"/>
+                        </p>
+                        <p>
+                            Phone Number: <h:outputText value="#{companyBean.phone}"/>
+                        </p>
+                        <p>
+                            Username : <h:outputText value="#{companyBean.username}"/>
+                        </p>
+                        <p>
+                            Officer Controlling Expenditure: <h:outputText value="#{companyBean.title}"/>
+                        </p>
+                        <div class="row">
+                            <div class="col-4" style="padding: 5px">
+                                <p:commandButton action="#{companyBean.updateDetails()}" value="Save Update"/>
+                            </div>
+                            <div class="col-6" style="padding: 5px">
+                                <p:commandButton value="Add another Payment" action="#{companyBean.newPayment()}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5 scroll">
+                        <h:form id="paymentReview">
+                            <p:dataGrid var="payment" value="#{companyBean.allPayments}" columns="2"
+                                        rows="8" paginator="true" id="movie-grid"
+                                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                        rowsPerPageTemplate="6,12,16">
+
+                                <f:facet name="header">
+                                    <p class="caption-index">The List of all the payments</p>
+                                </f:facet>
+
+                                <p:panel header="#{payment.receipt}" style="text-align:center">
+                                    <h:panelGrid columns="1" style="width:100%">
+                                        <h:outputText value="Paid By : #{payment.fullName}" />
+                                        <h:outputText value="Amount : #{payment.amount}" />
+                                        <h:commandButton value="View Payment Details" action="#{companyBean.paymentDetails(payment)}"/>
+                                    </h:panelGrid>
+                                </p:panel>
+
+                            </p:dataGrid>
+                        </h:form> 
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

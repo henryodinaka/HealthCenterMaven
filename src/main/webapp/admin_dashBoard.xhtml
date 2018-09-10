@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Admin</title>
+    </h:head>
+    <h:body>
+        <h1>Admin DashBoard</h1>
+
+        <ui:composition template="base_template.xhtml">
+            <ui:define name="body">
+                <h1>Welcome <h:outputText value="#{adminBean.fullName}"/></h1>
+                <div class="row">
+                    <div class="col-5">
+                        <p>
+                            Admin Name: <h:outputText value="#{adminBean.fullName}"/>
+                        </p>
+                        <p>
+                            Admin Username : <h:outputText value="#{adminBean.username}"/>
+                        </p> 
+                    </div>
+                    <div class="col-5 scroll">
+                            <p:panel header="The List of all the registered companies" /> 
+                        <p:accordionPanel value="#{companyBean.allCompanies}" var="company" dynamic="true" multiple="true">
+                            <p:tab title="#{company.companyName}"> <h:outputText value="Company Name: #{company.companyName}" />
+                                <h:outputText value="Company Email: #{company.email}" /><br/>
+                                <h:outputText value="Username: #{company.username}" /><br/>
+                                <p:commandButton value="View Payments" action="#{adminBean.viewPayments(company)}"/><br/>
+                            </p:tab>
+                        </p:accordionPanel>
+ 
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
+

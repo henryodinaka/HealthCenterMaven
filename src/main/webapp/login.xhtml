@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        
+        <link rel="stylesheet" href="resources/health-center.css"/>
+        <link rel="stylesheet" href="resources/movieSite.css"/>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <div id="header">
+
+            <div id="navbar">
+                <h:form id="login-form">
+                    <span class="nav-link " title="Home"><h:commandLink action="index?faces-redirect=true" value="Home"/></span>
+                    <span class="nav-link " ><h:commandLink class="active" value="Login" action="login"/></span>
+                </h:form>
+            </div> 
+        </div>
+        <div id="login-container"> 
+            <div class="login-content">
+                <h:form id="regForm">
+                    <div class="row col-12">
+                        <fieldset> 
+                                 
+                                    <legend> Sign in to your account </legend>
+                                 
+                                    <p:commandLink value="Forgot Password ?" action="login" class="col-3" style="position: relative; bottom: 2em; left: 25em;padding: 10px;"/>
+                                 
+                            <br/>
+                            <div class=" login-form">
+                                <div style="position: relative; right: 2.5em">
+                                    <p:outputLabel for="username" value="Username"/>
+                                    <p:inputText id="username" a:autofocus ="true" value="#{companyBean.username}" placeholder="Username" required="true" />
+                                </div>
+                                <div>
+                                    <p:outputLabel for="pass" value="Password"/>
+                                    <p:password id="pass" value="#{companyBean.password}" placeholder="Password" required="true"/>
+                                </div>
+                                <div >
+                                    <p:outputLabel for="userType" value="Select User Type"/>
+                                    <p:selectOneMenu value="#{companyBean.userType}" id="userType" required="true" requiredMessage="How do we Address YOu?">
+                                        <f:selectItem itemValue="U" itemLabel="User"/>
+                                        <f:selectItem itemValue="A" itemLabel="Admin"/>
+                                    </p:selectOneMenu>
+                                </div>
+                                <div style="position: relative; top: 1em;" class="row"> 
+                                    <div class="col-5">
+                                        <p:commandLink style="font-size: 18px; position: relative;top: .2em;" action="new_account?faces-redirect=true" value="Create Account"/>
+                                    </div>
+                                    <div class="col-4">
+                                        <p:commandButton action="#{companyBean.loginBtn()}" value="Login" style="width: 90%; position: relative;bottom: 1em; background-color: #4CAF50"/> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </h:form>
+            </div> 
+        </div>  
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>
+
+
+

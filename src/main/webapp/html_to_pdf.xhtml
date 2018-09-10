@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Print Page</title>
+        <link rel="stylesheet" href="resources/health-center.css"/>
+    </h:head>
+    <h:body style="padding: auto; margin: auto; width:100%"> 
+        <div class="main-container" style="background-color: cyan;margin: auto; width: 100%;">
+            <div class="container" style="background-color: whitesmoke;width: 100%;margin: auto;">
+                <div class="row">
+                    <div class="col-6"></div>
+                    <h:form>
+                        <div class="col-3"> 
+                            <p:commandLink onclick="document.getElementById('receipt-div').style.display = 'block'" style="width:auto;" value="Proof Payment"/> 
+                        </div>
+                        <div class="col-2"> 
+                            <h:commandLink value="Print File" action="#{adminBean.downloadPayment()}"/> 
+                        </div> 
+                    </h:form>
+                </div>
+                <div>
+                    <h:form>
+                        <h:message for="" showDetail="true" showSummary="true" style="font-family: monospace; font-size: 20px; color: navy; background-color: cadetblue"/>
+                    </h:form>
+                </div>
+                <div class="row">
+                    <h1>GOVERNMENT OF RIVERS STATE OF NIGERIA </h1>
+                    <h3>(RIVERS STATE PRIMARY HEALTH CARE MANAGEMENT BOARD)</h3>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h1>PAYMENT VOUCHER</h1>
+                        <h3>Other Charges</h3>
+
+                    </div>
+                    <div class="col-5">
+                        <table border="1" width="100%">
+                            <thead>
+                                <th>Station</th>
+                                <th>Month</th>
+                                <th>P.V.No</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Seen</td>
+                                    <td>#{adminBean.payment.month}</td>
+                                    <td>#{adminBean.payment.paymentVoucherNum}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <p>Head:<u><h:outputText value="#{companyBean.companyName}"/> </u>.....................................................................................</p>
+                    <p>Dr to...........................................................................................................................</p>
+                    <p>GPPH 3/1/2005/4,000-q</p>
+                </div>
+                <div class="row table">
+                    <div class="col-10">
+                        <table border="1" width="100%">
+                            <thead>
+                                <th>Date</th>
+                                <th>Detailed Description Of Service or Article</th>
+                                <th>Rate</th>
+                                <th>Amount</th>
+                            </thead>
+                            <tbody>
+                                <td>
+                                    <u><h:outputText value="#{adminBean.payment.created}"/></u>
+                                </td>
+                                <td>
+                                    <u><h:outputText value="#{adminBean.payment.purposeOfPayment}"/></u>
+                                </td>
+                                <td>
+                                    <h:outputText value="Naira"/>
+                                </td>
+                                <td>
+                                    <u><h:outputText value="#{adminBean.payment.amount}"/></u>
+                                </td>
+                            </tbody>
+                            <tfoot>
+                                <td>
+                                    Financial Authority: 
+                                    <u>
+                                        <h:outputText value="#{adminBean.payment.bank.toUpperCase()}"/>
+                                    </u> 
+                                </td>
+                                <td>
+                                    Total: 
+                                    <u>
+                                        <h:outputText value="#{adminBean.payment.amount}"/> 
+                                    </u>  
+                                </td>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-10">
+                        <p>
+                            <span>&lowast;</span> I CERTIFY THAT the above account is correct an was incurred under the authority quoted, and the service have been duly performed, and that the rate/price is according to regulation or fair and reasonable and that the amount of <u><h:outputText value="#{adminBean.payment.amountInWords}"/> </u>can be paid under the sub-head quoted 
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <p>Place....................................................... ........................20.............</p>
+                    </div>
+                    <div class="col-5">
+                        Signature: 
+                        <u>
+                            <strike> <h:outputText value="#{adminBean.payment.fullName}"/></strike>
+                        </u> 
+                        <p>
+                            Name: 
+                            <u>
+                                <h:outputText value="#{adminBean.payment.fullName.toUpperCase()}"/>
+                            </u> 
+                        </p>
+                        <p>
+                            Title:  
+                            <u>
+                                <h:outputText value="#{adminBean.payment.title.toUpperCase()}"/><br/>
+                            </u> 
+                            <span>
+                                <i>Officer Controlling Experience</i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-10">
+                        <p>
+                            RECEIVED this <u>#{adminBean.payment.month}</u> day of <u>#{adminBean.payment.month} </u> in payment of the above, the sum of <u>#{adminBean.payment.amountInWords.toUpperCase()}</u>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-5">
+                        <p>Witness to mark ..........................................</p>
+                    </div>
+                    <div class="col-5">
+                        <p>..............................................................</p>
+                        <i>Signature Of the Receiver</i>
+                    </div>
+                </div>
+                <p>*The certificate must be made to apply to the circumstances of the payment</p>
+
+            </div>
+            <!--@Henry please arrange the position of the iframe how you see fit
+                Note: It displays the uploaded receipt for the particular payment-->
+        </div> 
+        
+        <div id="receipt-div" class="modal form-tag-div">
+
+            <div id="message-form" class="modal-content animate">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('receipt-div').style.display = 'none'" class="close" title="Close Modal">&times;</span> 
+                </div>
+
+                <div class="container">
+
+                    <iframe id="receipt-fram" src="/HealthCenter/faces/company/receipt/#{companyBean.receipt}" style="width: 100%; height: 500px; margin: auto;"/>
+
+                    <p:graphicImage value="#{companyBean.receipt}"/>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+

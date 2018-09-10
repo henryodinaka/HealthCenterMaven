@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>File Upload </title>
+    </h:head>
+    <h:body>
+        <ui:composition template="payment_voucher.xhtml">
+            <ui:define name="body">
+                <div id="form-container" class="row">
+                    <div id="form-content" class="col-9">
+                        <h:form enctype="multipart/form-data" id="file-upload-form">
+                            <div class="row">
+                                <div class="col-9 form-btn-div">
+                                    <span style=""  >
+                                            <!--<p:ajax listener="{companyBean.setDisable(false)}"/>-->
+                                        <p:fileUpload fileUploadListener="#{companyBean.handleFileUpload}" value="#{companyBean.paymentReceipt}" mode="advanced" dragDropSupport="true"
+                                                      update="messages" sizeLimit="20000000" allowTypes="/(\.|\/)(gif|jpe?g|png|pdf)$/" oncomplete="#{companyBean.setDisable(false)}">
+                                        </p:fileUpload>
+                                    </span>
+
+                                    <p:growl id="messages" showDetail="true" />
+                                </div>
+                            </div>
+                        </h:form>
+                        <p:button id="disabledBtn" disabled="#{companyBean.disable}" href="confirmation.xhtml" value="Proceed to Confirmation"/>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

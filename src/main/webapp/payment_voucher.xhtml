@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    <title>Payment</title>
+        <link type="text/css" rel="stylesheet" href="resources/sign_up_in.css" />
+        <link type="text/css" rel="stylesheet" href="resources/movieSite.css" />
+        <link type="text/css" rel="stylesheet" href="resources/w3.css-mini.css"/>
+        <meta name="Description" content="Sign up and login page for the Nsukka catholic community"/>
+
+
+    </h:head>
+    <h:body>
+        <div id="header">
+
+            <div id="navbar">
+                <h:form>
+                    <span class="nav-link active" ><h:commandLink  value="Home" action="index?faces-redirect=true"/></span>
+                    <span class="nav-link" ><h:commandLink  value="Payment Voucher" action="#{companyBean.newPayment()}"/></span>
+                    <span class="nav-link" ><h:commandLink value="Genres" action="message?faces-redirect=true"/></span> 
+                    <span class="nav-link nv-right" ><h:commandLink action="#{companyBean.loginControlBtn()}" value="#{companyBean.loginBtn}"/></span>
+                    <span class="nav-link " style="float: right;" ><h:commandLink  class="active" value="Profile" action="#{companyBean.profile()}" rendered="#{companyBean.disable}"/></span>
+                </h:form>
+            </div> 
+        </div>
+        <div id="container" class="col-12">
+            <div id="main-container">
+                <h:form>
+                    <p:panel id="panel" header="#{companyBean.currentForm}">
+                        <div class="row">
+                            <div class="col-12"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <p><h:outputText value="New Account Creation"/></p>
+                            </div>
+                            <div class="col-3">
+                                <p><h:outputText value="New Payment"/></p>
+                            </div> 
+                            <div class="col-3">
+                                <p><h:outputText value="Upload Receipt"/></p>
+                            </div>
+                            <div class="col-3">
+                                <p><h:outputText value="Details Confirmation"/></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-7">
+                                <p><b><h:outputText value="#{companyBean.currentForm}"/></b></p>
+                            </div>
+                            <div class="col-2">
+                                <p><b><h:outputText value="Page #{companyBean.currentStage}"/> Of <h:outputText value="#{companyBean.totalStage}"/></b></p>
+                            </div>
+                        </div>
+                        <ui:insert name="body"/>
+                    </p:panel>
+                </h:form>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>
+

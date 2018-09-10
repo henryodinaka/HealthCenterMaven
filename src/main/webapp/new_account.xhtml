@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <title>User Register</title>
+    <h:head>
+        <link type="text/css" rel="stylesheet" href="resources/sign_up_in.css" />
+        <link type="text/css" rel="stylesheet" href="resources/movieSite.css" />
+        <link type="text/css" rel="stylesheet" href="resources/w3.css-mini.css"/>
+        <meta name="Description" content="New account creation for a new branch of a Health Care"/>
+
+
+    </h:head>
+    <h:body>
+        <div id="container" class="col-12">
+            <div id="main-container">
+                <ui:composition template="payment_voucher.xhtml">
+                    <ui:define name="body">
+                        <h:form>
+                            <div id="form-container" class="row">
+
+                                <div id="form-content" class="col-9">
+
+                                    <div class="row">
+
+                                        <div class="form-tag col-5">
+                                            <p:outputLabel class="form-label"  value="Head " for="head" /> <br/> <br/>
+                                            <p:inputText a:autofocus="true" id="head" value="#{companyBean.companyName}" placeholder="Your Company name" required="true" /> 
+                                        </div>
+
+                                        <div class="form-tag col-6">
+                                            <p:outputLabel class="form-label"  value="Phone Number" for="phone" />  <br/> <br/>
+                                            <p:inputText id="phone" value="#{companyBean.phone}" required="true"  placeholder="Phone Number"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="form-tag col-5" ><br/>
+                                            <p:outputLabel class="form-label"  value="Company's Email " for="email" />  <br/> <br/>
+                                            <p:inputText id="email" value="#{companyBean.email}" required="true"  placeholder="Provide a valid Email"/>
+                                        </div>
+
+                                        <div class="form-tag col-6"><br/>
+                                            <p:outputLabel  class="form-label" value="Username " for="uName" /> <br/> <br/> 
+                                            <p:inputText id="uName" value="#{companyBean.username}" placeholder="Username"  required="true" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="form-tag col-5">
+                                            <p:outputLabel class="form-label"  value="Password " for="pass" /> <br/> <br/>
+                                            <p:password id="pass"  value="#{companyBean.password}" placeholder="Password" required="true" /> 
+                                        </div>
+
+                                        <div class="form-tag col-6">
+                                            <p:outputLabel  class="form-label" value="Confirm Password " for="cPass" /> <br/> <br/>
+                                            <p:password id="cPass" value="#{companyBean.password2}" placeholder="Confirm Password" required="true" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row foot-section">
+                                <div class="col-2 form-btn-div">
+                                    <p:button outcome="index?faces-redirect=true" value="Cancel"/>
+                                </div>  
+                                <div class="col-7 form-btn-div">
+                                    <span id="btn-next"  ><p:commandButton action="#{companyBean.saveNewAccount()}" value="Save &amp; Proceed To Payment"/></span> 
+                                </div>
+                            </div> 
+                        </h:form>
+                    </ui:define>
+                </ui:composition>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>
+

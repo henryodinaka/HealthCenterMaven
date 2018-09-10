@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <title>User Register</title>
+    <h:head>
+        <link type="text/css" rel="stylesheet" href="resources/sign_up_in.css" />
+        <link type="text/css" rel="stylesheet" href="resources/movieSite.css" />
+        <link type="text/css" rel="stylesheet" href="resources/w3.css-mini.css"/>
+        <meta name="Description" content="Sign up and login page for the Nsukka catholic community"/>
+
+
+    </h:head>
+    <h:body> 
+        <div id="container" class="col-12">
+            <div id="main-container">
+                <ui:composition template="payment_voucher.xhtml">
+                    <ui:define name="body">
+                        <div id="form-container" class="row">
+                            <h:form>
+                                <div class="row">
+                                    <div id="form-content" class="col-9">
+                                        <!--                                        <div class="row">
+                                                                                    <p:messages for="messages" style="color: red;" />
+                                                                                </div>-->
+                                        <div class="row">
+
+                                            <div class="form-tag col-7">
+                                                <p:outputLabel class="form-label" value="Month Paid for" for="month" /> <br/> <br/>
+                                                <p:calendar  id="month" value="#{companyBean.month}" required="true"  placeholder="Month Paid for" showOn="button" /> 
+<!--                                                <p:selectOneMenu class="col-9" value="{companyBean.month}" id="month" required="true" requiredMessage="Which month Paid?" >
+                                                    <f:selectItem itemValue="" itemLabel="Select Month"/>
+                                                    <f:selectItem itemValue="1" itemLabel="January"/>
+                                                    <f:selectItem itemValue="2" itemLabel="February"/> 
+                                                    <f:selectItem itemValue="3" itemLabel="March"/>
+                                                    <f:selectItem itemValue="4" itemLabel="April"/>
+                                                    <f:selectItem itemValue="5" itemLabel="May"/>
+                                                    <f:selectItem itemValue="6" itemLabel="June"/>
+                                                    <f:selectItem itemValue="7" itemLabel="July"/>
+                                                    <f:selectItem itemValue="8" itemLabel="August"/> 
+                                                    <f:selectItem itemValue="9" itemLabel="September"/>
+                                                    <f:selectItem itemValue="10" itemLabel="October"/>
+                                                    <f:selectItem itemValue="11" itemLabel="November"/>
+                                                    <f:selectItem itemValue="12" itemLabel="December"/>
+
+                                                </p:selectOneMenu> -->
+                                            </div>
+
+                                            <div class="form-tag col-4">
+                                                <p:outputLabel class="form-label"  value="P.V.No" for="pvn" />  <br/> <br/>
+                                                <p:inputText id="pvn" value="#{companyBean.paymentVoucherNum}"  placeholder="Payment Voucher Number" required="true" />  
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="form-tag col-5" ><br/>
+                                                <p:outputLabel class="form-label"  value="Purpose of payment " for="purpose" />  <br/> <br/>
+                                                <p:inputText id="purpose" value="#{companyBean.purposeOfPayment}"  placeholder="Purpose Of Payment" required="true" />
+                                            </div>
+
+                                            <div class="form-tag col-6"><br/>
+                                                <p:outputLabel class="form-label"  value="Amount Paid " for="amount" />  <br/> <br/>
+                                                <p:inputText id="amount" value="#{companyBean.amount}" placeholder="Amount Paid" required="true" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="form-tag col-5">
+                                                <p:outputLabel  class="form-label" value="Financial Authority" for="bank" />  <br/> <br/>
+                                                <p:inputText id="bank" value="#{companyBean.bank}" placeholder ="Bank where the payment was made" required="true" />
+                                            </div>
+
+                                            <div class="form-tag col-6">
+                                                <p:outputLabel class="form-label"  value="Amoun In words" for="amountInWord" />  <br/> <br/>
+                                                <p:inputText id="amountInWord" value="#{companyBean.amountInWords}" required="true"  placeholder="Amount in words"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="form-tag col-11">
+                                                <p:outputLabel class="form-label"  value="Date Of Payment" for="dateOfPayment" /> <br/> <br/>
+                                                <p:calendar  id="dateOfPayment" value="#{companyBean.dateOfPayment}" required="true"  placeholder="Date of payment" showOn="button" pages="3"/> 
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="row foot-section">
+                                    <div class="col-2 form-btn-div">
+                                        <p:button icon="star" outcome="index?faces-redirect=true" value="Cancel"/>
+                                    </div> 
+                                    <div class="col-4 form-btn-div">
+
+                                        <span>
+
+                                            <p:commandButton action="#{companyBean.proceedToUpload()}" value="Save &amp; Upload Receipt"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </ui:define>
+                </ui:composition>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>
+

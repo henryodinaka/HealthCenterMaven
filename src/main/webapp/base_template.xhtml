@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Home</title>
+        <link rel="stylesheet" href="resources/movieSite.css"/>
+        <link rel="stylesheet" href="resources/health-center.css"/> 
+
+    </h:head>
+    <h:body>
+        <div id="header">
+
+            <div id="caption">
+                <marquee width = "50%">Rivers State Primary Health Care Management Board</marquee>
+            </div>  
+
+
+            <div id="navbar">
+                <h:form>
+                    <span class="nav-link active" ><h:commandLink class="active" value="Home" action="index?faces-redirect=true"/></span>
+                    <span class="nav-link" ><h:commandLink value="Payment Voucher" action="#{companyBean.newPayment()}"/></span>
+                    <span class="nav-link" ><h:commandLink value="About" action="index"/></span> 
+                    <span class="nav-link" ><h:commandLink action="#{companyBean.loginControlBtn()}" value="#{companyBean.loginBtn}"/></span>
+                    <span class="nav-link " style="float: right; position: relative;right: 2em; bottom: 3em;" ><h:commandLink value="Profile" action="#{companyBean.profile()}" rendered="#{companyBean.disable}"/></span>
+                </h:form>
+            </div> 
+        </div> 
+        <p:panel header="Rivers State Primary Health Care Management Board"/>
+        <br />
+        <div id="wrapper-other"> 
+
+            <div id="main-content"> 
+                <ui:insert name="body"/> 
+            </div>
+        </div> 
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>
+
